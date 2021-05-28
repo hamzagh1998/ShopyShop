@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <section class="order-list">
+    <div class="container">
+      <div class="row">
+        {% if shippings %}
+          <div id="total-amount" class="col-xs-10 offset-xs-1 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+            <h2 class="text-secondary">Orders: </h2>
+            <div class="table-responsive-sm">
+              <table class="table mt-0">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for shipping in shippings %}
+                  <tr>
+                    <td><div id="img-card"><img src="{{ shipping.product.imageURL }}" alt=""></div></td>
+                    <td>{{ shipping.product.name }}</td>
+                    <td>{{ shipping.quantity }}</td>
+                    <td>{{ shipping.product.price }}</td>
+                    <td class="total">${{ shipping.getTotal }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <hr>
+      <div class="row">
+        <div id="total-amount" class="col-md-10"></div>
+        <div id="total-amount" class="col-md-10 mb-5">
+          <form method="POST">
+            {% csrf_token %}
+            <input id="checkbox" type="checkbox" name="shipping" value="{{ shipping.shipped }}"> Shipped
+            <br>
+            <input class="btn btn-success" type="submit" name="" value="SUBMIT">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="{% static 'js/order.js' %}"></script>
+
+  <script type="text/javascript">
+    const checkbox = document.getElementById('checkbox');
+    const shipping = '{{ shipping.shipped }}';
+    if (checkbox.value === 'True') {
+      checkbox.checked = true;
+    } else if (checkbox.value === 'Frue'){
+      checkbox.checked = false;
+    }
+  </script>
+{% endblock %}

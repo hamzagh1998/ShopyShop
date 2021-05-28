@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <section>
+    <!-- Filter -->
+    <section class="filter">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="jumbotron mt-5">
+              <div class="filter-form">
+                <form method="POST">
+                  {% csrf_token %}
+                  <i id="filter-icon" class="ion-funnel"></i>
+                  <select class="custom-select" name="filter">
+                    <option selected>All</option>
+                    <option value="technologies">technologies</option>
+                    <option value="clothes">clothes</option>
+                    <option value="books">books</option>
+                    <option value="accessoires">accessoires</option>
+                    <option value="other">other</option>
+                  </select>
+                  <input class="btn btn-secondary" type="submit" name="" value="Apply">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Product -->
+    <section class="products">
+      <div class="container">
+        <div id="box" class="row mt-2">
+          {% if products %}
+            {% for product in products %}
+              <div class="col-xs-1 col-sm-2 col-md-4 col-lg-4">
+                <div class="content">
+                  <img src="{{ product.imageURL }}" alt="">
+                  <h2 class="product-name">{{ product.name }}</h2>
+                  <p><b class="text-secondary">Category:</b> {{ product.category }}</p>
+                  <hr>
+                  <p><b class="text-secondary">Quantity: </b>{{ product.quantity }}</p>
+                  <p><b class="text-secondary">Price: </b>${{ product.price }}</p>
+                  <p class="text-secondary">{{ product.date_added|timesince }}</p>
+                  {% if not request.user.is_staff %}
+                    <a id="add" class="btn btn-outline-success"
+                      data-product-id="{{ product.id }}"
+                      data-product-name="{{ product.name }}"
+                      data-product-imageURL="{{ product.imageURL }}"
+                      data-product-quantity="{{ product.quantity }}"
+                      data-product-price="{{ product.price }}">Add To Cart</a>
+                  {% endif %}
+                  {% if request.user.is_staff %}
+                  <a id="update" class="btn btn-outline-warning" href="{% url 'store:update-product' product.id %}">Update</a>
+                  <a id="delete" data-product-id="{{ product.id }}" class="btn btn-outline-danger">Delete</a>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <script type="text/javascript" src="{% static 'js/store.js' %}"></script>
+
+{% endblock %}

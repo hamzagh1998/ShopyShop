@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <section class="product-form">
+    <div class="container">
+      <div class="col-xs-8 offset-xs-2 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+        <h1 class="text-secondary">Add new product: </h1>
+        <div class="card">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-success" type="submit" value="Save Product">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

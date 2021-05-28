@@ -1,0 +1,208 @@
+:root {
+  --main-color: #fc5c65;
+  --main-light-color: rgba(255, 244, 244, 0.99);
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-size: 22px
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+table {
+  margin-top: 5rem;
+  background-color: var(--main-light-color);
+}
+
+tr {
+  text-align: center;
+}
+
+p {
+  font-size: 70%;
+}
+
+small {
+  font-size: 60%;
+}
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #fff;
+}
+
+.body-background {
+  opacity: 0.2;
+}
+
+.card {
+  padding: 1rem;
+}
+
+.hidden {display: none;}
+
+.product-name {
+  color: var(--main-color);
+}
+
+.admin-operation {
+  font-size: 130%;
+  color: var(--main-color);
+  margin: 0 1rem;
+}
+
+/* ========= NavBar ========== */
+.pk-light {
+  background-color: #fff4f4;
+}
+
+#shop-cart {
+  font-size: 130%;
+  margin: 0;
+  color: var(--main-color);
+}
+
+/*========= Nvbar Icons =========*/
+.navbar-brand span, #home {
+  color: var(--main-color);
+}
+
+#cart-total {
+	text-align: center;
+	color:#fff;
+	background-color: var(--main-color);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 20px;
+  padding-bottom: 5px;
+}
+
+
+input[type="text"] {
+  transition: border 0.5s ease;
+}
+
+input[type="text"]:focus {
+  border: 1px solid #ff1527;
+}
+
+#search-btn {
+  color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+#search-btn:focus, #search-btn:hover {
+  color: #fff;
+  background-color: var(--main-color);
+}
+
+/*========== section of shopping content ==========*/
+.content {
+  margin: 0.5rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--main-light-color);
+  border-radius: 2.5%;
+  box-shadow: 4px 8px #ffe1e3;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.content:hover {
+  border: 1px solid var(--main-color);
+  box-shadow: 2px 4px #ffbfc4;
+}
+
+.content img {
+  max-height: 220px;
+  min-height: 220px;
+  width: 100%
+}
+
+img {
+  max-height: 220px;
+  width: 100%
+}
+
+.invisible {
+  display: none;
+}
+
+.pop-up {
+  position: fixed;
+  background-color: #fff;
+  top: 8rem;
+  left: 20%;
+  width: 60%;
+  z-index: 10;
+  padding: 4rem;
+  border: 2px solid var(--main-color);
+  border-radius: 1rem;
+}
+/*======== filter section =========*/
+#filter-icon {
+  color: var(--main-color);
+  font-size: 200%;
+}
+
+.filter-form {
+  position: relative;
+  left: 25%;
+  top: 0;
+  width: 50%;
+}
+
+
+/*========= card section =========*/
+#img-card {
+  position: relative;
+  width: 5rem;
+  height: 4.5rem;
+  border: 2px solid #ded7d7;
+}
+
+#up, #down {
+  cursor: pointer;
+  font-size: 130%;
+  color: var(--main-color);
+}
+
+.total-amount {
+  color: var(--main-color);
+}
+
+.checkout-form {
+  background-color: var(--main-light-color);
+  padding: 1.5rem;
+}
+
+#trash {
+  cursor: pointer;
+  font-size: 150%;
+  color: rgb(255, 15, 15);
+}

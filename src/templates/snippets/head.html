@@ -1,0 +1,29 @@
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'vendors/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script type="text/javascript">
+  function getToken(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getToken('csrftoken');
+  </script>
+  <title>ShopyShop</title>
+</head>
